@@ -4,6 +4,9 @@ This is the base repo for a brownfield project used at Turing for Backend Mod 3.
 
 Project Spec and Evaluation Rubric: https://github.com/turingschool-examples/brownfield-of-dreams
 
+### Schema:
+![Alt text](./public/schema_diagram.png?raw=true "Database Schema")
+
 ### Project Board
 
 Students will continue to build on the existing code base using the cards within the following Github Project: https://github.com/turingschool-examples/brownfield-of-dreams/projects/1
