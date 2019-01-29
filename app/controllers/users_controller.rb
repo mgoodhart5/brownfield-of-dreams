@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   def show
+    # binding.pry
+    # @user = User.find_by[curerent_user.id]
   end
 
   def new
