@@ -46,7 +46,7 @@ Set up the database
 $ rake db:create
 $ rake db:migrate
 $ rake db:seed
-```
+```  
 
 Run the test suite:
 ```ruby
