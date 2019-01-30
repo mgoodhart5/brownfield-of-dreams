@@ -14,12 +14,12 @@ describe Repo do
 
     attributes = {
       name: name,
-      url: url
+      html_url: url
     }
     repo = Repo.new(attributes)
 
     expect(repo.name).to eq(name)
     expect(repo.url).to eq(url)
   end
-  
+
 end
