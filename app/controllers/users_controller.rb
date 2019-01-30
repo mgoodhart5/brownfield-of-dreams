@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def show
+    @repos = 
   end
 
   def new

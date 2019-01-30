@@ -13,8 +13,9 @@
   <section class="github">
     <h1>Github</h1>
     <ul class="repo">
-      <li class="name">
-      </li>
+    <% @repos.each do |repo| %>
+      <li class="name"><%= repo.name %></li>
+    <% end %>
     </ul>
   </section>
 </section>
