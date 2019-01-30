@@ -25,6 +25,7 @@ describe 'As a logged in user' do
       expect(page).to have_content("Github")
       within(first(".repo")) do
         expect(page).to have_css(".name")
+        expect(page).to have_link("little_shop")
       end
     end
   end

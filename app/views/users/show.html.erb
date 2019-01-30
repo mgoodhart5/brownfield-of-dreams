@@ -14,7 +14,7 @@
     <h1>Github</h1>
     <ul class="repo">
     <% @repos.each do |repo| %>
-      <li class="name"><%= repo.name %></li>
+      <li class="name"><%= link_to "#{repo.name}", "#{repo.url}" %></li>
     <% end %>
     </ul>
   </section>
