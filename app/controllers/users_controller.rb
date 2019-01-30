@@ -7,10 +7,11 @@ class UsersController < ApplicationController
     end
     response = @conn.get("/user/repos")
 
-    @repos = JSON.parse(response.body, symbolize_names: true).take(5)
-    @repos.each do |repo|
+    raw_repos = JSON.parse(response.body, symbolize_names: true).take(5)
+    @repos = raw_repos.map do |repo|
       Repo.new(repo)
     end
+    @repos
   end
 
   def new

@@ -20,6 +20,6 @@ describe Repo do
 
     expect(repo.name).to eq(name)
     expect(repo.url).to eq(url)
-
   end
+  
 end
