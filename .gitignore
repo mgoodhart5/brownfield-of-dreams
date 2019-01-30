@@ -16,6 +16,9 @@
 # Ignore uploaded files in development
 /storage/*
 /coverage
+/spec/cassettes/*
+/spec/cassettes/An_Admin_can_edit_a_tutorial/by_adding_a_video.yml
+
 
 /node_modules
 /yarn-error.log

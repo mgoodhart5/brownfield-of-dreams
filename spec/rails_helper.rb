@@ -14,6 +14,13 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
+  config.filter_sensitive_data("<GITHUB_API_KEY_MF>") { ENV['GITHUB_API_KEY_MF'] }
+end
+
+def stub_get_json(url, filename)
+  json_response = File.open("./spec/fixtures/#{filename}")
+  stub_request(:get, url).
+    to_return(status: 200, body: json_response)
 end
 
 
