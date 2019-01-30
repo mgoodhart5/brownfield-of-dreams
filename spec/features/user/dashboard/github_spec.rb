@@ -31,5 +31,6 @@ describe 'As a User' do
 #  API call DOES NOT use: https://developer.github.com/v3/repos/#list-user-repositories
 #  No hashes in the view.
 #  Uses objects in the view to represent the Repos.
-#  Edge case: Make sure this shows the proper repositories when there are more than one user in the database with different tokens.
+#  Edge case: Make sure this shows the proper repositories when there are more
+# than one user in the database with different tokens. (look at Anna's slack)
 #  Don't display the "Github" section if the user is missing a Github token
