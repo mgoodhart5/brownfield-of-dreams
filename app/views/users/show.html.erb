@@ -7,6 +7,15 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
+  <% if @repos.count > 0 %>
+  <h3>Github</h3>
+    <ul class="repo">
+      <% @repos.each do |repo| %>
+        <li class="name"><%= link_to "#{repo.name}", "#{repo.url}" %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <section>
     <h1>Bookmarked Segments</h1>
   </section>

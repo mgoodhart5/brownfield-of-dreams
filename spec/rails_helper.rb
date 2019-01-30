@@ -12,10 +12,16 @@ VCR.configure do |config|
   config.ignore_localhost = true
   config.cassette_library_dir = 'spec/cassettes'
   config.hook_into :webmock
-  config.configure_rspec_metadata!
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
+  config.filter_sensitive_data("<GITHUB_API_KEY>") { ENV['GITHUB_API_KEY'] }
+  config.configure_rspec_metadata!
 end
 
+def stub_get_json(url, filename)
+  json_response = File.open("./spec/fixtures/#{filename}")
+  stub_request(:get, url).
+    to_return(status: 200, body: json_response)
+end
 
 ActiveRecord::Migration.maintain_test_schema!
 

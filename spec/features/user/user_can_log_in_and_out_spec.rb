@@ -2,26 +2,28 @@ require 'rails_helper'
 
 describe 'User' do
   it 'user can sign in' do
-    user = create(:user)
+    VCR.use_cassette("user_can_sign_in") do
+      user = create(:user)
 
-    visit '/'
+      visit '/'
 
-    click_on "Sign In"
+      click_on "Sign In"
 
-    expect(current_path).to eq(login_path)
+      expect(current_path).to eq(login_path)
 
-    fill_in 'session[email]', with: user.email
-    fill_in 'session[password]', with: user.password
+      fill_in 'session[email]', with: user.email
+      fill_in 'session[password]', with: user.password
 
-    click_on 'Log In'
+      click_on 'Log In'
 
-    expect(current_path).to eq(dashboard_path)
-    expect(page).to have_content(user.email)
-    expect(page).to have_content(user.first_name)
-    expect(page).to have_content(user.last_name)
+      expect(current_path).to eq(dashboard_path)
+      expect(page).to have_content(user.email)
+      expect(page).to have_content(user.first_name)
+      expect(page).to have_content(user.last_name)
+    end
   end
 
-  it 'can log out', :js do
+  it 'can log out', :vcr do
     user = create(:user)
 
     visit login_path
@@ -39,7 +41,7 @@ describe 'User' do
 
     expect(current_path).to eq(root_path)
     expect(page).to_not have_content(user.first_name)
-    expect(page).to have_content('SIGN IN')
+    expect(page).to have_content('Sign In')
   end
 
   it 'is shown an error when incorrect info is entered' do

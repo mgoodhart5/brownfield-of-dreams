@@ -2,6 +2,10 @@ require 'rails_helper'
 
 describe 'vister can create an account', :js do
   it ' visits the home page' do
+    filename = "github_repos.json"
+    url = "https://api.github.com/user/repos"
+    stub_get_json(url, filename)
+    
     email = 'jimbob@aol.com'
     first_name = 'Jim'
     last_name = 'Bob'

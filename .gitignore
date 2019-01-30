@@ -33,3 +33,6 @@
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+
+/spec/cassettes
+/spec/fixtures/cassettes
