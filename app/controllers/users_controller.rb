@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     @repos = Repo.find_all_repos(current_user)
-    
+    @followers = Follower.find_all_followers(current_user)
   end
 
   def new
