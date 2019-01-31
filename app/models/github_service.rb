@@ -1,4 +1,4 @@
-class GithubRepoService
+class GithubService
 
   def initialize(user)
     @user = user
@@ -15,5 +15,10 @@ class GithubRepoService
       faraday.headers["Authorization"] = "token #{the_token}"
       faraday.adapter Faraday.default_adapter
     end
+  end
+
+  def followers_for_user
+    response = conn.get("/user/followers")
+    JSON.parse(response.body, symbolize_names: true)
   end
 end
