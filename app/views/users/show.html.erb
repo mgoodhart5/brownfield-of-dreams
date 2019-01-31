@@ -18,4 +18,12 @@
     <% end %>
     </ul>
   </section>
+  <section class="github_followers">
+    <h1>Followers</h1>
+    <ul class="follower">
+    <% @followers.each do |follower| %>
+      <li class="handle"><%= link_to "#{follower.name}", "#{follower.url}" %></li>
+    <% end %>
+    </ul>
+  </section>
 </section>

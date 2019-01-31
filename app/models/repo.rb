@@ -7,7 +7,7 @@ class Repo
   end
 
   def self.find_all_repos(user)
-    github_repo_response = GithubRepoService.new(user)
+    github_repo_response = GithubService.new(user)
     github_repo_response.repos_for_user.map do |repo|
       Repo.new(repo)
     end

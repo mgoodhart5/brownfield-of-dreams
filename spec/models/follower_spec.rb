@@ -17,4 +17,12 @@ describe Follower do
     expect(follower.name).to eq(name)
     expect(follower.url).to eq(url)
   end
+
+end
+
+describe '.class methods' do
+  it '.find_all_followers', :vcr do
+    user = create(:user)
+    expect(Follower.find_all_followers(user).count).to eq(24)
+  end
 end
