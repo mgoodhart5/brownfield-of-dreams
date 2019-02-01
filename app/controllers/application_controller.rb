@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :find_bookmark
   helper_method :list_tags
   helper_method :tutorial_name
+  helper_method :logged_in_with_github?
 
   add_flash_types :success
 
@@ -21,4 +22,9 @@ class ApplicationController < ActionController::Base
   def four_oh_four
     raise ActionController::RoutingError.new('Not Found')
   end
+
+  def logged_in_with_github?
+    session[:logged_in_with_github].present?
+  end
+
 end

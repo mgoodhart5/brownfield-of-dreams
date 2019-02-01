@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
+
   def show
-    @repos = Repo.find_all_repos(current_user)
-    @followers = Follower.find_all_followers(current_user)
-    @followings = Following.find_all_followings(current_user)
+    if logged_in_with_github?
+      @repos = Repo.find_all_repos(current_user)
+      @followers = Follower.find_all_followers(current_user)
+      @followings = Following.find_all_followings(current_user)
+    end
   end
 
   def new

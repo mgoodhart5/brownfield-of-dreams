@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    session[:logged_in_with_github] = nil
     redirect_to root_path
   end
 
