@@ -15,13 +15,6 @@ ActiveRecord::Schema.define(version: 2019_02_02_175348) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "github_tokens", force: :cascade do |t|
-    t.integer "gh_user_id"
-    t.string "token"
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_github_tokens_on_user_id"
-  end
-
   create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
@@ -88,7 +81,6 @@ ActiveRecord::Schema.define(version: 2019_02_02_175348) do
     t.index ["tutorial_id"], name: "index_videos_on_tutorial_id"
   end
 
-  add_foreign_key "github_tokens", "users"
   add_foreign_key "user_videos", "users"
   add_foreign_key "user_videos", "videos"
 end

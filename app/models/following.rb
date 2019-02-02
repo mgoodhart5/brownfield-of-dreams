@@ -2,7 +2,6 @@ class Following
   attr_reader :name, :url
 
   def initialize(attributes)
-    # binding.pry
     @name = attributes[:login]
     @url = attributes[:html_url]
   end

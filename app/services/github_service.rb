@@ -4,6 +4,11 @@ class GithubService
     @user = user
   end
 
+  def status
+    response = conn.get("/user/repos")
+    response.status
+  end
+
   def repos_for_user
     response = conn.get("/user/repos")
     JSON.parse(response.body, symbolize_names: true).take(5)
