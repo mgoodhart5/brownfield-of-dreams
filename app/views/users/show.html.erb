@@ -3,7 +3,7 @@
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <% if !logged_in_with_github? || !current_user.token_valid? %>
-    <%= button_to 'Connect to GitHub', github_login_path, class: "btn btn-primary mb1 bg-teal" %>
+    <%= button_to 'Connect to GitHub', '/auth/github', class: "btn btn-primary mb1 bg-teal" %>
   <% end %>
   <h3>Account Details</h3>
   <ul>
