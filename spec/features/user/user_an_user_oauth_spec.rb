@@ -5,9 +5,9 @@ describe 'As a logged in user' do
   it 'when I visit /dashboard I see a Github section', :vcr do
     user = create(:user)
 
+
     visit '/'
     click_on "Sign In"
-    expect(current_path).to eq(login_path)
     fill_in 'session[email]', with: user.email
     fill_in 'session[password]', with: user.password
     click_on 'Log In'
@@ -17,6 +17,7 @@ describe 'As a logged in user' do
     expect(page).to have_button("Connect to Github")
   end
 end
+
 
 
 # As a user

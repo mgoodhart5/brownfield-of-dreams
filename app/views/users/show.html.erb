@@ -8,6 +8,9 @@
     <li> <%= current_user.email%> </li>
   </ul>
   <section>
+
+  <%= button_to("Connect to Github", oauth_path, method: :get %>
+
     <h1>Bookmarked Segments</h1>
   </section>
   <section class="github">
