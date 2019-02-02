@@ -8,6 +8,8 @@ class User < ApplicationRecord
   enum role: [:default, :admin]
   has_secure_password
 
+  
+
   def token_valid?
     GithubService.new(self).status == 200
   end
