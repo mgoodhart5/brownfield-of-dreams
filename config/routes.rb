@@ -35,9 +35,7 @@ Rails.application.routes.draw do
   # Is this being used?
   get '/video', to: 'video#show'
 
-  resources :users, only: [:new, :create, :update, :edit] do
-    :oauth
-  end
+  resources :users, only: [:new, :create, :update, :edit]
 
 
   resources :tutorials, only: [:show, :index] do
@@ -45,4 +43,6 @@ Rails.application.routes.draw do
   end
 
   resources :user_videos, only:[:create, :destroy]
+
+  get '/auth/github/callback', to: 'github/sessions#create'
 end
