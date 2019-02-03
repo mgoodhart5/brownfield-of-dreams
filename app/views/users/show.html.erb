@@ -13,7 +13,7 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
-  <% if logged_in_with_github? %>
+  <% if logged_in_with_github? && current_user.token_valid? %>
     <section class="github">
       <h1>Github</h1>
       <ul class="repo">

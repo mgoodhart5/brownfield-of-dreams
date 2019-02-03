@@ -13,6 +13,10 @@ describe 'As a logged in User' do
 
     expect(page).to have_button("Connect to Github")
   end
+  # it 'can click on github button' do
+  #   user = create(:user)
+  #
+  # end
 end
 
 # As a user

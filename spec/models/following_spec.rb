@@ -21,8 +21,8 @@ end
 
 describe '.class methods' do
   it '.find_all_followings', :vcr do
-    user = create(:user)
+    user = create(:token_user)
+    
     expect(Following.find_all_followings(user).count).to eq(30)
-    # binding.pry
   end
 end

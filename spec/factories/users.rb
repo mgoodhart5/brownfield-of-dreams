@@ -5,6 +5,10 @@ FactoryBot.define do
     last_name { Faker::Artist.name }
     password { Faker::Color.color_name }
     role { :default }
+    trait :token do
+      token { ENV['GITHUB_API_KEY'] }
+    end
+    factory :token_user, :traits => [:token]
   end
 
   factory :admin, parent: :user do

@@ -6,5 +6,11 @@ class User < ApplicationRecord
   validates_presence_of :password, on: :create
   validates_presence_of :first_name
   enum role: [:default, :admin]
+  
   has_secure_password
+
+  def token_valid?
+    GithubService.new(self).status == 200
+  end
+
 end

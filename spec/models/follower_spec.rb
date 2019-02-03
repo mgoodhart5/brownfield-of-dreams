@@ -22,7 +22,8 @@ end
 
 describe '.class methods' do
   it '.find_all_followers', :vcr do
-    user = create(:user)
+    user = create(:token_user)
+
     expect(Follower.find_all_followers(user).count).to eq(24)
   end
 end
