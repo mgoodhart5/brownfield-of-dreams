@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+get '/auth/github/callback', to: "github_sessions#create"
+
   namespace :api do
     namespace :v1 do
       resources :tutorials, only:[:show, :index]
