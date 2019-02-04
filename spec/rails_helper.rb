@@ -8,6 +8,8 @@ require 'rspec/rails'
 require 'vcr'
 require 'webmock/rspec'
 
+OmniAuth.config.test_mode = true
+
 VCR.configure do |config|
   config.ignore_localhost = true
   config.cassette_library_dir = 'spec/cassettes'

@@ -2,6 +2,9 @@
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
+  <% if !logged_in_with_github? || !current_user.token_valid? %>
+    <%= button_to 'Connect to GitHub', '/auth/github', class: "btn btn-primary mb1 bg-teal" %>
+  <% end %>
   <h3>Account Details</h3>
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
@@ -10,28 +13,30 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
-  <section class="github">
-    <h1>Github</h1>
-    <ul class="repo">
-    <% @repos.each do |repo| %>
-      <li class="name"><%= link_to "#{repo.name}", "#{repo.url}" %></li>
-    <% end %>
-    </ul>
-  </section>
-  <section class="github_followers">
-    <h1>Followers</h1>
-    <ul class="followers">
-    <% @followers.each do |follower| %>
-      <li class="handle"><%= link_to "#{follower.name}", "#{follower.url}" %></li>
-    <% end %>
-    </ul>
-  </section>
-  <section class="github_following">
-    <h1>Following</h1>
-    <ul class="followings">
-    <% @followings.each do |following| %>
-      <li class="handle"><%= link_to "#{following.name}", "#{following.url}" %></li>
-    <% end %>
-    </ul>
-  </section>
+  <% if logged_in_with_github? && current_user.token_valid? %>
+    <section class="github">
+      <h1>Github</h1>
+      <ul class="repo">
+      <% @repos.each do |repo| %>
+        <li class="name"><%= link_to "#{repo.name}", "#{repo.url}" %></li>
+      <% end %>
+      </ul>
+    </section>
+    <section class="github_followers">
+      <h1>Followers</h1>
+      <ul class="followers">
+      <% @followers.each do |follower| %>
+        <li class="handle"><%= link_to "#{follower.name}", "#{follower.url}" %></li>
+      <% end %>
+      </ul>
+    </section>
+    <section class="github_following">
+      <h1>Following</h1>
+      <ul class="followings">
+      <% @followings.each do |following| %>
+        <li class="handle"><%= link_to "#{following.name}", "#{following.url}" %></li>
+      <% end %>
+      </ul>
+    </section>
+  <% end %>
 </section>

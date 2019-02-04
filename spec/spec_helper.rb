@@ -6,6 +6,7 @@ RSpec.configure do |config|
 
    config.before(:each) do
      DatabaseCleaner.strategy = :transaction
+     OmniAuth.config.mock_auth[:github] = nil
    end
 
    config.before(:each, :js => true) do
