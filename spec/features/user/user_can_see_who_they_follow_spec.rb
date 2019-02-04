@@ -16,6 +16,7 @@ describe 'As a logged in User' do
     fill_in 'session[email]', with: user.email
     fill_in 'session[password]', with: user.password
     click_on 'Log In'
+    click_on 'Connect to GitHub'
 
     within ".github_following" do
       expect(page).to have_content("Following")

@@ -9,13 +9,14 @@ describe 'As a logged in User' do
     }
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(auth_hash)
 
-    user_followers = Follower.find_all_followers(token)
+    user_followers = Follower.find_all_followers(user)
 
     visit '/'
     click_on "Sign In"
     fill_in 'session[email]', with: user.email
     fill_in 'session[password]', with: user.password
     click_on 'Log In'
+    click_on 'Connect to GitHub'
 
     within ".github_followers" do
       expect(page).to have_content("Followers")
