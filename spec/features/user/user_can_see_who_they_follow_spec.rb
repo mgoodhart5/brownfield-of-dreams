@@ -2,9 +2,14 @@ require 'rails_helper'
 
 describe 'As a logged in User' do
   it 'when the user visits /dashboard they see a following section', :vcr do
-    user = create(:user)
-    token = "token_thing"
-    user_following = Following.find_all_followings(token)
+    user = create(:token_user)
+    auth_hash = {
+      :provider => 'github',
+      :credentials => { :token => user.token }
+    }
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(auth_hash)
+
+    user_following = Following.find_all_followings(user)
 
     visit '/'
     click_on "Sign In"
