@@ -18,9 +18,10 @@ describe 'As a logged in user when I visit /dashboard' do
     click_on 'Log In'
     click_on 'Connect to GitHub'
 
-    within ".followers" do
-      expect(page).to have_content('mgoodhart5')
+    within ".follower-0" do
+      expect(page).to have_content('abroberts5')
       expect(page).to have_button('Add to Friends')
+      click_on 'Add to Friends'
     end
   end
 
