@@ -12,7 +12,7 @@ describe GithubService do
 
   it 'gets repos for user' do
     VCR.use_cassette("gets_repo_for_users") do
-      user = create(:user)
+      user = create(:token_user)
       grp = GithubService.new(user)
 
       expect(grp.repos_for_user.count).to eq(5)
