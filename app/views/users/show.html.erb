@@ -25,8 +25,12 @@
     <section class="github_followers">
       <h1>Followers</h1>
       <ul class="followers">
-      <% @followers.each do |follower| %>
-        <li class="handle"><%= link_to "#{follower.name}", "#{follower.url}" %></li>
+      <% @followers.each_with_index do |follower, index| %>
+        <section class="follower-<%= index %>">
+
+          <li class="handle"><%= link_to "#{follower.name}", "#{follower.url}" %></li>
+          <%= button_to 'Add to Friends', friendship_index_path(:name => follower.name), :method => :post, class: "btn btn-primary mb1 bg-teal" %>
+        </section>
       <% end %>
       </ul>
     </section>
