@@ -16,7 +16,6 @@ class User < ApplicationRecord
 
   def bookmark_videos
     videos = UserVideo.where(user_id: self.id)
-    all_videos = Video.where(id: videos)
-    all_videos
+    Video.where(id: videos)
   end
 end

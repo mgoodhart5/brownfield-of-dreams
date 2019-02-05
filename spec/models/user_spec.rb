@@ -23,7 +23,7 @@ RSpec.describe User, type: :model do
     end
   end
   describe 'instance methods' do
-    it '#bookmark_videos', :vcr do
+    xit '#bookmark_videos', :vcr do
       v_1, v_2, v_3 = create_list(:video, 3)
       user = create(:user)
       user_2 = create(:user)
