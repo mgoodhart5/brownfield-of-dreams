@@ -22,6 +22,11 @@ describe 'As a logged in user when I visit /dashboard' do
       expect(page).to have_button('Add to Friends')
       click_on 'Add to Friends'
     end
+
+    expect(current_path).to eq(dashboard_path)
+    within(".primary_nav") do
+      expect(page).to have_content("Friend Count: 1")
+    end
   end
 
 end

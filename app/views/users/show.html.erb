@@ -29,7 +29,7 @@
         <section class="follower-<%= index %>">
           <li class="handle"><%= link_to "#{follower.name}", "#{follower.url}" %></li>
           <% if follower.app_user? %>
-            <%= button_to 'Add to Friends', friendship_index_path(:name => follower.name), :method => :post, class: "btn btn-primary mb1 bg-teal" %>
+            <%= button_to 'Add to Friends', friendship_index_path(:name => follower.name), :method => :post %>
           <% end %>
         </section>
       <% end %>
