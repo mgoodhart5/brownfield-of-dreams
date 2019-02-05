@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2019_02_04_220812) do
   create_table "friendships", force: :cascade do |t|
     t.integer "friend_id"
     t.integer "friendee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|

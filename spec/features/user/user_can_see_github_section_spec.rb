@@ -15,7 +15,6 @@ describe 'As a logged in user' do
     fill_in 'session[email]', with: user.email
     fill_in 'session[password]', with: user.password
     click_on 'Log In'
-    click_on 'Connect to GitHub'
 
     expect(current_path).to eq(dashboard_path)
 
