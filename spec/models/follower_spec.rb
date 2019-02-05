@@ -28,8 +28,15 @@ describe '.class methods' do
     expect(Follower.find_all_followers(user).count).to eq(amount)
   end
 end
+
 describe '#instance methods' do
   it '#app_user?' do
-    
+    create(:user, github_id: "nick0lass")
+    name = "nick0lass"
+    email = "email@gmail.com"
+    attributes = {login: name, gh_email: email}
+    follower = Follower.new(attributes)
+
+    expect(follower.app_user?).to eq(true)
   end
 end
