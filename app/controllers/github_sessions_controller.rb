@@ -2,8 +2,7 @@ class GithubSessionsController < ApplicationController
 
   def create
     current_user.token = auth_hash["credentials"]["token"]
-    # current_user.uid = auth_hash["uid"]
-
+    current_user.uid = auth_hash["info"]["login"]
     if current_user.save
       session[:logged_in_with_github] = true
     end

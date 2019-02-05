@@ -18,7 +18,7 @@ describe 'As a logged in user when I visit /dashboard' do
     click_on 'Log In'
 
     within ".follower-0" do
-      expect(page).to have_content('abroberts5')
+      expect(page).to have_content('user_2.github_id')
       expect(page).to have_button('Add to Friends')
       click_on 'Add to Friends'
     end
