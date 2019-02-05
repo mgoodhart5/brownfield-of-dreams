@@ -23,3 +23,16 @@ RSpec.describe User, type: :model do
     end
   end
 end
+describe 'instance methods' do
+  it '#bookmark_videos' do
+    v_1, v_2, v_3 = create_list(:video, 3)
+    user = create(:user)
+    user_2 = create(:user)
+    user_video_1 = UserVideo.create(user: user, video: v_1)
+    user_video_2 = UserVideo.create(user: user, video: v_2)
+    user_video_3 = UserVideo.create(user: user, video: v_3)
+    user_video_4 = UserVideo.create(user: user_2, video: v_3)
+
+    expect(user.bookmark_videos).to eq([v_1, v_2, v_3])
+  end
+end

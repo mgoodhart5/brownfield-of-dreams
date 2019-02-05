@@ -13,8 +13,8 @@
   <section>
     <h1>Bookmarked Segments</h1>
     <ul>
-      <% @bookmarked_videos.each do |b_video| %>
-      <li> b_video.title </li>
+      <% @my_videos.each do |video| %>
+        <li><%= video.title %></li>
       <% end %>
     </ul>
   </section>

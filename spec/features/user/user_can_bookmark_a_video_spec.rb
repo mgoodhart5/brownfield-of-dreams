@@ -33,19 +33,30 @@ describe 'A registered user' do
   end
   it 'sees the bookmarked video on their profile' do
     tutorial= create(:tutorial)
-    video = create(:video, tutorial_id: tutorial.id)
-    user = create(:user)
+    v_1 = create(:video, title: "So Fun", tutorial_id: tutorial.id)
+    v_2 = create(:video, title: "So Not Fun", tutorial_id: tutorial.id)
+    user_2 = create(:user)
+    user_video_1 = UserVideo.create(user: user_2, video: v_1)
 
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_2)
 
-    visit tutorial_path(tutorial)
-
-    click_on 'Bookmark'
-    expect(page).to have_content("Bookmark added to your dashboard")
     visit dashboard_path
 
     expect(page).to have_content("Bookmarked Segments")
-    expect(page).to have_content("#{video.title}")
+    expect(page).to have_content("#{v_1.title}")
+
+    visit tutorial_path(tutorial)
+    expect(page).to have_content(v_2.title)
+    click_on("#{v_2.title}")
+    click_on 'Bookmark'
+    expect(page).to have_content("Bookmark added to your dashboard")
+
+    visit dashboard_path
+
+    expect(page).to have_content("Bookmarked Segments")
+
+    expect(page).to have_content(v_1.title)
+    expect(page).to have_content(v_2.title)
   end
 end
 

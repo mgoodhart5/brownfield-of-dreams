@@ -5,6 +5,8 @@ class UsersController < ApplicationController
       @followers = Follower.find_all_followers(current_user)
       @followings = Following.find_all_followings(current_user)
     end
+    @my_videos = current_user.bookmark_videos
+    # binding.pry
   end
 
   def new

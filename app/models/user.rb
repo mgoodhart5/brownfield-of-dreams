@@ -13,4 +13,9 @@ class User < ApplicationRecord
   def token_valid?
     GithubService.new(self).status == 200
   end
+
+  def bookmark_videos
+    videos = UserVideo.where(user_id: self.id)
+    Video.where(id: videos)
+  end
 end
