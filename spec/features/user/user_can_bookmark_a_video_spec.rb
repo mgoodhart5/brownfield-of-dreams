@@ -31,8 +31,10 @@ describe 'A registered user' do
     click_on 'Bookmark'
     expect(page).to have_content("Already in your bookmarks")
   end
-  it 'sees the bookmarked video on their profile' do
-    tutorial= create(:tutorial)
+end
+describe  "a user checks a page for bookmarked videos" do
+  xit 'sees the bookmarked video on their profile', :vcr do
+    tutorial = create(:tutorial)
     v_1 = create(:video, title: "So Fun", tutorial_id: tutorial.id)
     v_2 = create(:video, title: "So Not Fun", tutorial_id: tutorial.id)
     user_2 = create(:user)
@@ -43,20 +45,19 @@ describe 'A registered user' do
     visit dashboard_path
 
     expect(page).to have_content("Bookmarked Segments")
-    expect(page).to have_content("#{v_1.title}")
 
     visit tutorial_path(tutorial)
     expect(page).to have_content(v_2.title)
-    click_on("#{v_2.title}")
+    click_on(v_2.title)
     click_on 'Bookmark'
     expect(page).to have_content("Bookmark added to your dashboard")
 
     visit dashboard_path
 
-    expect(page).to have_content("Bookmarked Segments")
-
-    expect(page).to have_content(v_1.title)
-    expect(page).to have_content(v_2.title)
+    within ".bookmarks" do
+      expect(page).to have_content(v_1.title)
+      expect(page).to have_content(v_2.title)
+    end
   end
 end
 

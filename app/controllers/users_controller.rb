@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   def show
     if current_user.token && current_user.token_valid?
       @repos = Repo.find_all_repos(current_user)
@@ -6,7 +7,6 @@ class UsersController < ApplicationController
       @followings = Following.find_all_followings(current_user)
     end
     @my_videos = current_user.bookmark_videos
-    # binding.pry
   end
 
   def new
