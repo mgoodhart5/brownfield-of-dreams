@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    if logged_in_with_github? && current_user.token_valid?
+    if current_user.token && current_user.token_valid?
       @repos = Repo.find_all_repos(current_user)
       @followers = Follower.find_all_followers(current_user)
       @followings = Following.find_all_followings(current_user)

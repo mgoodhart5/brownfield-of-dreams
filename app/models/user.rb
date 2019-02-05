@@ -1,10 +1,8 @@
 class User < ApplicationRecord
   has_many :user_videos
   has_many :videos, through: :user_videos
-  # has_many :friendees, foreign_key: :friendee_id, class_name: 'Friendship'
-  # has_many :friends, through: :friendees
-  has_many :friends, foreign_key: :friend_id, class_name: 'Friendship'
-  has_many :friendees, through: :friends
+  has_many :friendees, foreign_key: :friendee_id, class_name: 'Friendship'
+  has_many :friends, through: :friendees
 
   validates :email, uniqueness: true, presence: true
   validates_presence_of :password, on: :create
