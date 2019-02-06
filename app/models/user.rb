@@ -15,7 +15,10 @@ class User < ApplicationRecord
   end
 
   def bookmark_videos
-    videos = UserVideo.where(user_id: self.id)
-    Video.where(id: videos)
+    Video.joins(:user_videos)
+    .where("videos.id = user_videos.video_id")
+    .where("user_videos.user_id = ?", self.id)
+    .order(:position)
+    .order(:tutorial_id)
   end
 end

@@ -33,7 +33,7 @@ describe 'A registered user' do
   end
 end
 describe  "a user checks a page for bookmarked videos" do
-  xit 'sees the bookmarked video on their profile', :vcr do
+  it 'sees the bookmarked video on their profile', :vcr do
     tutorial = create(:tutorial)
     v_1 = create(:video, title: "So Fun", tutorial_id: tutorial.id)
     v_2 = create(:video, title: "So Not Fun", tutorial_id: tutorial.id)
