@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
+  
   def show
     if current_user.token && current_user.token_valid?
       @repos = Repo.find_all_repos(current_user)
       @followers = Follower.find_all_followers(current_user)
       @followings = Following.find_all_followings(current_user)
     end
+    @my_videos = current_user.bookmark_videos
   end
 
   def new

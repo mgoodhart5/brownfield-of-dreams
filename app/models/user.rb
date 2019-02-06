@@ -13,4 +13,12 @@ class User < ApplicationRecord
   def token_valid?
     GithubService.new(self).status == 200
   end
+
+  def bookmark_videos
+    Video.joins(:user_videos)
+      .where("videos.id = user_videos.video_id")
+      .where("user_videos.user_id = ?", self.id)
+      .order(:position)
+      .order(:tutorial_id)
+  end
 end

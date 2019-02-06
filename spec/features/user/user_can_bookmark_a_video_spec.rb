@@ -32,3 +32,37 @@ describe 'A registered user' do
     expect(page).to have_content("Already in your bookmarks")
   end
 end
+describe  "a user checks a page for bookmarked videos" do
+  it 'sees the bookmarked video on their profile', :vcr do
+    tutorial = create(:tutorial)
+    v_1 = create(:video, title: "So Fun", tutorial_id: tutorial.id)
+    v_2 = create(:video, title: "So Not Fun", tutorial_id: tutorial.id)
+    user_2 = create(:user)
+    user_video_1 = UserVideo.create(user: user_2, video: v_1)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_2)
+
+    visit dashboard_path
+
+    expect(page).to have_content("Bookmarked Segments")
+
+    visit tutorial_path(tutorial)
+    expect(page).to have_content(v_2.title)
+    click_on(v_2.title)
+    click_on 'Bookmark'
+    expect(page).to have_content("Bookmark added to your dashboard")
+
+    visit dashboard_path
+
+    within ".bookmarks" do
+      expect(page).to have_content(v_1.title)
+      expect(page).to have_content(v_2.title)
+    end
+  end
+end
+
+# As a logged in user
+# When I visit '/dashboard'
+# Then I should see a list of all bookmarked segments under the Bookmarked Segments section
+# And they should be organized by which tutorial they are a part of
+# And the videos should be ordered by their position

@@ -10,8 +10,13 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section>
+  <section class="bookmarks">
     <h1>Bookmarked Segments</h1>
+    <ul>
+      <% @my_videos.each do |video| %>
+        <li><%= video.title %></li>
+      <% end %>
+    </ul>
   </section>
   <% if current_user.token && current_user.token_valid? %>
     <section class="github">
@@ -40,6 +45,9 @@
       <ul class="followings">
       <% @followings.each do |following| %>
         <li class="handle"><%= link_to "#{following.name}", "#{following.url}" %></li>
+        <% if following.app_user? %>
+          <%= button_to 'Add to Friends', friendship_index_path(:name => following.name), :method => :post %>
+        <% end %>
       <% end %>
       </ul>
     </section>

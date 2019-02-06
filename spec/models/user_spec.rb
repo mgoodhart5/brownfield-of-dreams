@@ -22,4 +22,22 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+  describe 'instance methods' do
+    it '#bookmark_videos', :vcr do
+      tutorial = create(:tutorial)
+      tutorial_2 = create(:tutorial)
+      v_1 = create(:video, position: 1, tutorial: tutorial)
+      v_2 = create(:video, position: 0, tutorial: tutorial)
+      v_3 = create(:video, position: 3, tutorial: tutorial_2)
+      v_4 = create(:video)
+      user = create(:user)
+      user_2 = create(:user)
+      user_video_1 = UserVideo.create(user: user, video: v_1)
+      user_video_2 = UserVideo.create(user: user, video: v_2)
+      user_video_3 = UserVideo.create(user: user, video: v_3)
+      user_video_4 = UserVideo.create(user: user_2, video: v_3)
+
+      expect(user.bookmark_videos).to eq([v_2, v_1, v_3])
+    end
+  end
 end
