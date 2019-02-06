@@ -115,6 +115,8 @@ m3_tutorial.videos.create!({
   "position"=>6
 })
 
+Tutorial.create!( {"title"=>"Back End Engineering - Module 3", "description"=>"Video content for Mod 3.", "thumbnail"=>"https://i.ytimg.com/vi/R5FPYQgB6Zc/hqdefault.jpg", "playlist_id"=>"PL1Y67f0xPzdOq2FcpWnawJeyJ3ELUdBkJ", "classroom"=>false, "tag_list"=>["Internet", "BDD", "Ruby"]} )
+
 User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password:  "password", role: :admin)
 User.create!(email: 'user@gmail.com', first_name: 'Leigh', last_name: 'Cepriano', password:  "123", role: :default)
 User.create!(email: 'user2@gmail.com', first_name: 'Emma', last_name: 'Villagomez', password:  "321", role: :default, github_id: 'RodneyPerez')
