@@ -5,6 +5,6 @@
   </head>
   <body>
     <h1>Hi <%= @user.first_name %> </h1>
-    <h1><%= link_to "Visit here to activate your account.", user_status_url(:host => 'localhost:3000', :protocol => 'http', :id => @user.id) %></h1>
+    <h1><%= link_to "Visit here to activate your account.", user_status_url(:host => 'https://fast-bayou-82329.herokuapp.com', :protocol => 'https', :id => @user.id) %></h1>
   </body>
 </html>
