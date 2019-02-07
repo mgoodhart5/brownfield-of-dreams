@@ -4,7 +4,7 @@
     <% current_user.friends.each do |friend| %>
       <h3><strong>Friends: </strong><%= friend.github_id %></h3>
     <% end %>
-
+    Status: <%= current_user.current_status %>
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <% if !current_user.token %>
     <%= button_to 'Connect to GitHub', '/auth/github', class: "btn btn-primary mb1 bg-teal" %>

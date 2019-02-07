@@ -27,6 +27,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    user = User.find(params[:id])
+    user.status = true
+    user.save
+    flash[:notice] = "Thank you! Your account is now activated!"
+    redirect_to dashboard_path
+  end
+
   private
 
   def user_params
