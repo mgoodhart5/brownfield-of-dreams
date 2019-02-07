@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   def show
     if current_user.token && current_user.token_valid?
       @repos = Repo.find_all_repos(current_user)
@@ -17,6 +17,9 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
+      UserMailer.activation_email(user).deliver
+      flash[:notice] = "You are logged in as #{user.first_name}"
+      flash[:error] = "This account has not yet been activated. Please check your email."
       redirect_to dashboard_path
     else
       flash[:error] = 'Username already exists'
