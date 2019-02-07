@@ -18,9 +18,9 @@ describe 'As a logged in user when I visit /dashboard' do
 
     expect(page).to have_button("Send an Invite")
   end
-  it 'I click send invite button and am taken to /invite', :vcr do
+  it 'I click send invite button and am taken to /invite NIL email', :vcr do
     user = create(:token_user)
-    github_handle = "RodneyPerez"
+    github_handle = "le3ah"
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -39,7 +39,36 @@ describe 'As a logged in user when I visit /dashboard' do
     expect(page).to have_content("Send an Invite!")
     fill_in 'github_id', with: github_handle
     expect(page).to have_button("Send Invite")
+
     click_button("Send Invite")
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content("The Github user you selected doesn't have an email address associated with their account.")
+  end
+  it 'I click send invite button and am taken to /invite public email', :vcr do
+    user = create(:token_user)
+    github_handle = "mgoodhart5"
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit dashboard_path
+
+    auth_hash = {
+      :provider => 'github',
+      :info => { :name => 'Name'},
+      :credentials => { :token => user.token }
+    }
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(auth_hash)
+
+    click_button("Send an Invite")
+
+    expect(current_path).to eq(invite_path)
+    expect(page).to have_content("Send an Invite!")
+    fill_in 'github_id', with: github_handle
+    expect(page).to have_button("Send Invite")
+
+    click_button("Send Invite")
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content("The Github user you selected doesn't have an email address associated with their account.")
   end
 end
 

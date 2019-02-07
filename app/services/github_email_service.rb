@@ -1,4 +1,4 @@
-class GithubService
+class GithubEmailService
 
   def initialize(handle)
     @handle = handle
@@ -6,13 +6,12 @@ class GithubService
 
   def conn
     Faraday.new(url: "https://api.github.com") do |faraday|
-      faraday.params["handle"] = "#{@handle}"
       faraday.adapter Faraday.default_adapter
     end
   end
 
-  def email_info
-    response = conn.get("/users")
+  def github_user
+    response = conn.get("/users/#{@handle}")
     JSON.parse(response.body, symbolize_names: true)
   end
 
