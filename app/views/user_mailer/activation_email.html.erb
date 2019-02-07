@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta content="text/html; charset=utf-8" http-quiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi <%= @user.first_name %> </h1>
+    <h1><%= link_to "Visit here to activate your account.", activation_url(:host => 'localhost:3000', :protocol => 'http', :user_id => user.id) %></h1>
+  </body>
+</html>
