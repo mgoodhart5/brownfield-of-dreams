@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/auth/github/callback', to: "github_sessions#create"
   resources :friendship, only: [:create], as: "friendship"
   post '/invite', to: 'invite#new'
-  get '/search', to: "search#index", as: :search
+  get '/search', to: "search#show", as: :search
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
