@@ -5,6 +5,7 @@ describe 'As a logged in User' do
     user = create(:token_user)
     auth_hash = {
       :provider => 'github',
+      :info => { :name => 'Name'},
       :credentials => { :token => user.token }
     }
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(auth_hash)
@@ -25,5 +26,4 @@ describe 'As a logged in User' do
       end
     end
   end
-
 end
