@@ -11,7 +11,17 @@ Rails.application.configure do
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
-
+  
+  config.action_mailer.delivery_method = :smtp
+# SMTP settings for mailgun
+  config.action_mailer.smtp_settings = {
+   :port                 => 587,
+   :address              => "smtp.mailgun.org",
+   :domain               => ENV['MG_DOMAIN'],
+   :user_name            => ENV['MG_USERNAME'],
+   :password             => ENV['MG_PASSWORD'],
+   :authentication       => "plain",
+  }
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true

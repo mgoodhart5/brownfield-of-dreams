@@ -21,4 +21,5 @@ class User < ApplicationRecord
       .order(:position)
       .order(:tutorial_id)
   end
+
 end
