@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
 
   def show
-    invite_info = Invite.find_email(params[:github_id])
+    invite_info = Invite.find_email(params[:github_id], current_user)
     if invite_info.email
       UserMailer.invite_email(invite_info)
       flash[:notice] = "Successfully sent invite!"
