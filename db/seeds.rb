@@ -114,6 +114,13 @@ m3_tutorial.videos.create!({
   "thumbnail"=>"https://i.ytimg.com/vi/FcgkfZEv_LI/hqdefault.jpg",
   "position"=>6
 })
+m3_tutorial.videos.create!({
+  "title"=>"BDD - Consuming an API 2",
+  "description"=> Faker::Hipster.paragraph(2, true),
+  "video_id"=>"FcgkfZEv_LI",
+  "thumbnail"=>"https://i.ytimg.com/vi/FcgkfZEv_LI/hqdefault.jpg",
+  "position"=>nil
+})
 
 Tutorial.create!( {"title"=>"Back End Engineering - Module 4", "description"=>"Video content for Mod 4.", "thumbnail"=>"https://i.ytimg.com/vi/R5FPYQgB6Zc/hqdefault.jpg", "playlist_id"=>"PL1Y67f0xPzdOq2FcpWnawJeyJ3ELUdBkJ", "classroom"=>false, "tag_list"=>["Internet", "BDD", "Ruby"]} )
 
