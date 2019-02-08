@@ -31,4 +31,9 @@ class GithubService
     JSON.parse(response.body, symbolize_names: true)
   end
 
+  def email_info(handle)
+    response = conn.get("/users/#{handle}")
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
 end

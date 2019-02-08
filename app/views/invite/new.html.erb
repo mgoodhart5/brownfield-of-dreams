@@ -1,0 +1,13 @@
+<div class="sendvite">
+  <main>
+    <h4>Send an Invite!</h4>
+    <section>
+      <%= form_tag :search, method: :get, class: "form-inline" do %>
+      <div class="invite">
+        <%= text_field_tag :github_id, "Github Handle", class: "form-control" %>
+        <%= submit_tag "Send Invite", class: "btn btn-primary" %>
+      </div>
+      <% end %>
+    </section>
+  </main>
+</div>

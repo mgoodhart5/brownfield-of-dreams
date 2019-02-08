@@ -10,6 +10,7 @@
       <h5><strong>Status: </strong>Inactive</h5>
     <% end %>
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
+  <%= button_to 'Send an Invite', invite_path, class: "btn btn-primary mb1 bg-teal" %>
   <% if !current_user.token %>
     <%= button_to 'Connect to GitHub', '/auth/github', class: "btn btn-primary mb1 bg-teal" %>
   <% end %>
