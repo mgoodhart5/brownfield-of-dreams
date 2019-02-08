@@ -10,7 +10,6 @@
       <h5><strong>Status: </strong>Inactive</h5>
     <% end %>
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
-  <%= button_to 'Send an Invite', invite_path, class: "btn btn-primary mb1 bg-teal" %>
   <% if !current_user.token %>
     <%= button_to 'Connect to GitHub', '/auth/github', class: "btn btn-primary mb1 bg-teal" %>
   <% end %>
@@ -26,10 +25,12 @@
         <li><%= video.title %></li>
       <% end %>
     </ul>
-  </section>
+  </section><br>
   <% if current_user.token && current_user.token_valid? %>
     <section class="github">
       <h1>Github</h1>
+      <h4>Add Friends!</h4>
+      <%= button_to 'Send an Invite', invite_path, class: "btn btn-primary mb1 bg-teal" %>
       <ul class="repo">
       <% @repos.each do |repo| %>
         <li class="name"><%= link_to "#{repo.name}", "#{repo.url}" %></li>
